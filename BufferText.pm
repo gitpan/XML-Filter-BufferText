@@ -9,7 +9,7 @@ package XML::Filter::BufferText;
 use strict;
 use base qw(XML::SAX::Base);
 use vars qw($VERSION $AUTOLOAD);
-$VERSION = '0.01';
+$VERSION = '1.00';
 
 #-------------------------------------------------------------------#
 # now who said SAX was complex...
@@ -34,17 +34,10 @@ sub AUTOLOAD {
 
 ### AUTOLOAD and inheritance don't work all that well, this is a
 ### workaround for that problem.
-sub start_document;
-sub end_document;
-sub start_element;
-sub end_element;
-sub processing_instruction;
-sub ignorable_whitespace;
-sub skipped_entity;
-sub comment;
-sub entity_reference;
-sub start_entity;
-sub end_entity;
+sub start_document;     sub end_document;           sub start_element;
+sub end_element;        sub processing_instruction; sub comment;
+sub skipped_entity;     sub ignorable_whitespace;   sub end_entity;
+sub start_entity;       sub entity_reference;
 
 1;
 #,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
@@ -79,13 +72,18 @@ In the above case, given the interleaving comment, there will be two
 C<character()> events. This may be worked around in the future if there is
 demand for it.
 
+An interesting way to use this filter, instead of telling users to use it,
+is to return it from your handler's constructor, already configured and all.
+That'll make the buffering totally transparent to them (C<XML::SAX::Writer>
+does that).
+
 =head1 AUTHOR
 
 Robin Berjon, robin@knowscape.com
 
 =head1 COPYRIGHT
 
-Copyright (c) 2001,2002 Robin Berjon. All rights reserved. This program is
+Copyright (c) 2001-2002 Robin Berjon. All rights reserved. This program is
 free software; you can redistribute it and/or modify it under the same
 terms as Perl itself.
 

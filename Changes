@@ -1,5 +1,8 @@
 
 Revision history for XML::Filter::BufferText:
 
+1.00  sun 20020706 20:37
+    - cleaned up docs
+
 0.01  sun 20020127 19:59:55
     - original version
