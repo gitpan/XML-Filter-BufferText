@@ -2,6 +2,7 @@
 ###
 # XML::Filter::BufferText - Filter to put all characters() in one event
 # Robin Berjon <robin@knowscape.com>
+# 04/07/2003 - v1.01
 # 26/11/2001 - v0.01
 ###
 
@@ -9,7 +10,7 @@ package XML::Filter::BufferText;
 use strict;
 use base qw(XML::SAX::Base);
 use vars qw($VERSION $AUTOLOAD);
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 #-------------------------------------------------------------------#
 # now who said SAX was complex...
@@ -38,6 +39,7 @@ sub start_document;     sub end_document;           sub start_element;
 sub end_element;        sub processing_instruction; sub comment;
 sub skipped_entity;     sub ignorable_whitespace;   sub end_entity;
 sub start_entity;       sub entity_reference;
+sub start_cdata;        sub end_cdata;
 
 1;
 #,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
